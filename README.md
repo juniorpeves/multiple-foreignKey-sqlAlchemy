@@ -22,8 +22,8 @@ class Place(Base):
     idPlace = Column(Integer, primary_key=True)
     namePlace = Column(String(30))
 
-    registers2 = relationship("Register", back_populates="place_owner", foreign_keys="[Register.idPlaceOrigin]")
-    registers3 = relationship("Register", back_populates="place_owner2", foreign_keys="[Register.idPlaceDestination]")
+    registers3 = relationship("Register", back_populates="place_owner", foreign_keys="[Register.idPlaceOrigin]")
+    registers4 = relationship("Register", back_populates="place_owner2", foreign_keys="[Register.idPlaceDestination]")
 
 
 class Register(Base):
@@ -35,19 +35,20 @@ class Register(Base):
     detail = Column(String(50))
     
     idCarReg = Column(Integer, ForeignKey("cars.idCar"))     
-    car_owner = relationship("Car", back_populates="registers")
+    car_owner = relationship("Car", back_populates="registers1")
     
     idTRReg = Column(Integer, ForeignKey("typeRegistersCar.idTR"))    
-    type_reg_car_owner = relationship("TypeRegisterCar", back_populates="registers")
+    type_reg_car_owner = relationship("TypeRegisterCar", back_populates="registers2")
     
     idPlaceOrigin = Column(Integer, ForeignKey("places.idPlace"))        
-    place_owner = relationship("Place", back_populates="registers2", foreign_keys=[idPlaceOrigin])
+    place_owner = relationship("Place", back_populates="registers3", foreign_keys=[idPlaceOrigin])
     
     idPlaceDestination = Column(Integer, ForeignKey("places.idPlace"))    
-    place_owner2 = relationship("Place", back_populates="registers3", foreign_keys=[idPlaceDestination])
+    place_owner2 = relationship("Place", back_populates="registers4", foreign_keys=[idPlaceDestination])
     
     idUserReg = Column(Integer, ForeignKey("users.idUser"))     
-    user_owner = relationship("User", back_populates="registers4")
+    user_owner = relationship("User", back_populates="registers5")
+
 ```
 
 Como se puede apreciar en el codigo, cada FK tiene un diferente `back_populates` y en la clase Place, cada `relationship` tiene su FK.
