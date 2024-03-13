@@ -4,7 +4,10 @@
 
 ```http
 {
-  "error": "Could not determine join condition between parent/child tables on relationship Place.registers - there are multiple foreign key paths linking the tables.  Specify the 'foreign_keys' argument, providing a list of those columns which should be counted as containing a foreign key reference to the parent table."
+  "error": "Could not determine join condition between parent/child tables on relationship 
+  Place.registers - there are multiple foreign key paths linking the tables.  Specify the 
+  'foreign_keys' argument, providing a list of those columns which should be counted as 
+  containing a foreign key reference to the parent table."
 }
 ```
 
